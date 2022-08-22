@@ -2,16 +2,14 @@ package com.example.springboot.Entity;
 
 
 import com.example.springboot.Constant.Major;
-import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.*;
-import java.security.Timestamp;
 import java.util.Date;
 import java.util.List;
 
 @Entity
 @Table(name = "class")
-public class Class {
+public class ClassInfo {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY) //Xác định khóa chính
     private int id;
@@ -23,18 +21,16 @@ public class Class {
     @Enumerated(EnumType.STRING) //Xác định các giá trị có thể nhập vào
     private Major major;  //trong phạm vi các biến của enum Major
 
-    @Column(name="create_at", columnDefinition = "TIMESTAMP")
-    @CreationTimestamp //Lưu thời gian tại thời điểm insert
-    private Timestamp createAt;
+    @Column(name="create_at", columnDefinition = "DATE")
+    private Date createAt;
 
-    @Column(name="update_at", columnDefinition = "TIMESTAMP") // định nghĩa cho cột là kiểu thời gian timestamp
-    @CreationTimestamp //Lưu thời gian tại thời điểm Update
-    private Timestamp updateAt;
+    @Column(name="update_at", columnDefinition = "DATE") // định nghĩa cho cột là kiểu thời gian timestamp
+    private Date updateAt;
 
     @OneToMany(mappedBy="class", fetch = FetchType.EAGER) //ánh xạ từ bảng class, bắt buộc lớp nào muốn liên kết với bảng class thì phải định nghĩa class trong nó
     private List<Student> studentList;
 
-    public Class(int id, String className, Major major, Timestamp createAt, Timestamp updateAt, List<Student> studentList) {
+    public ClassInfo(int id, String className, Major major, Date createAt, Date updateAt, List<Student> studentList) {
         this.id = id;
         this.className = className;
         this.major = major;
@@ -43,7 +39,7 @@ public class Class {
         this.studentList = studentList;
     }
 
-    public Class() {
+    public ClassInfo() {
 
     }
 
@@ -71,19 +67,19 @@ public class Class {
         this.major = major;
     }
 
-    public Timestamp getCreateAt() {
+    public Date getCreateAt() {
         return createAt;
     }
 
-    public void setCreateAt(Timestamp createAt) {
+    public void setCreateAt(Date createAt) {
         this.createAt = createAt;
     }
 
-    public Timestamp getUpdateAt() {
+    public Date getUpdateAt() {
         return updateAt;
     }
 
-    public void setUpdateAt(Timestamp updateAt) {
+    public void setUpdateAt(Date updateAt) {
         this.updateAt = updateAt;
     }
 

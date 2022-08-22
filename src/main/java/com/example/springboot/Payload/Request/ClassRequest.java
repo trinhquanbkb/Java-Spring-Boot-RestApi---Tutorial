@@ -2,11 +2,11 @@ package com.example.springboot.Payload.Request;
 
 import com.example.springboot.Constant.Major;
 
-public class AddClass {
+public class ClassRequest {
     private String className;
     private Major major;
 
-    public AddClass(String className, Major major) {
+    public ClassRequest(String className, Major major) {
         this.className = className;
         this.major = major;
     }

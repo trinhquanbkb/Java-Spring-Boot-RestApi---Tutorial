@@ -1,12 +1,14 @@
 package com.example.springboot.Payload.Request;
 
-public class AddStudent {
+public class StudentRequest {
     private String nameStudent;
     private String mssv;
+    private String className;
 
-    public AddStudent(String nameStudent, String mssv) {
+    public StudentRequest(String nameStudent, String mssv, String className) {
         this.nameStudent = nameStudent;
         this.mssv = mssv;
+        this.className = className;
     }
 
     public String getNameStudent() {
@@ -23,5 +25,13 @@ public class AddStudent {
 
     public void setMssv(String mssv) {
         this.mssv = mssv;
+    }
+
+    public String getClassName() {
+        return className;
+    }
+
+    public void setClassName(String className) {
+        this.className = className;
     }
 }
